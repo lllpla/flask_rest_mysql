@@ -9,6 +9,5 @@ api.add_resource(PersonListView, '/person')
 
 # Start the flask loop
 if __name__ == '__main__':
-
     app.run()
 

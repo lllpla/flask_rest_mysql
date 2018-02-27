@@ -1,6 +1,7 @@
 from flask_restful import reqparse, Resource, abort
+from sqlalchemy.exc import IntegrityError
 
-from models import Person, db
+from models import Person
 
 parser = reqparse.RequestParser()
 parser.add_argument('id')
@@ -15,9 +16,7 @@ class PersonView(Resource):
             person = Person.query.filter(Person.id == person_id).one()
         except Exception as e:
             abort(404, message="person {} doesn't exist".format(person_id))
-        person = {'id': person.id,
-                  'name': person.name}
-        return person
+        return person.to_json()
 
 class PersonListView(Resource):
 
@@ -25,15 +24,14 @@ class PersonListView(Resource):
         person_list = Person.query.order_by(Person.id.desc()).all()
         person_view_list = []
         for person in person_list:
-            person_view_list.append({'id': person.id,
-                  'name': person.name})
+            person_view_list.append(person.to_json())
         return person_view_list, 201
 
     def post(self):
         args = parser.parse_args()
-        db_person = Person(args['id'], args['name'])
-        db.session.add(db_person)
-        db.session.commit()
-        person = {'id': db_person.id,
-                  'name': db_person.name}
-        return person, 201
+        person = Person(args['id'], args['name'])
+        try:
+            person.save()
+        except IntegrityError as e:
+            abort(500, error="{}".format(e.args[0]),code=500)
+        return person.to_json(), 201
