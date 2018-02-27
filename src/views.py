@@ -7,6 +7,7 @@ parser = reqparse.RequestParser()
 parser.add_argument('id')
 parser.add_argument('name')
 
+
 # modelView
 class PersonView(Resource):
 
@@ -17,6 +18,7 @@ class PersonView(Resource):
         except Exception as e:
             abort(404, message="person {} doesn't exist".format(person_id))
         return person.to_json()
+
 
 class PersonListView(Resource):
 

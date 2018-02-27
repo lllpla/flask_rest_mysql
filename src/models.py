@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from src.apps import app
 db = SQLAlchemy(app)
 
+
 # model
 class Person(db.Model):
     __tablename__ = 'person'
