@@ -1,7 +1,7 @@
 from flask_restful import reqparse, Resource, abort
 from sqlalchemy.exc import IntegrityError
 
-from models import Person
+from src.models import Person
 
 parser = reqparse.RequestParser()
 parser.add_argument('id')

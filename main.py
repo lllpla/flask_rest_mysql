@@ -1,7 +1,6 @@
-from flask import Flask
 from flask_restful import  Api
-from apps import app
-from views import PersonView, PersonListView
+from src.apps import app
+from src.views import PersonView, PersonListView
 
 api = Api(app)
 api.add_resource(PersonView, '/person/<person_id>')
