@@ -7,18 +7,18 @@
 
 ## 文件列表
 
-### 1.apps.py
+### 1. src/apps.py
 
 APP默认配置
 
-### 2.models.py
+### 2. src/models.py
 
 数据库配置
 
-### 3.views.py
+### 3. src/views.py
 
 rest-api相关配置
 
-### 4.main.py
+### 4. main.py
 
 主运行程序
