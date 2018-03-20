@@ -1,5 +1,4 @@
-from flask_restful import  Api
-from src.apps import app
+from flask_restful import Api
 from src.views import PersonView, PersonListView
 from werkzeug.contrib.fixers import ProxyFix
 

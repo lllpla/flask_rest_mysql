@@ -3,7 +3,13 @@
 
 ## 依赖
 
+flask的包
 `pip install flask flask_restful flask_sqlalchemy`
+wsgi服务相关
+`pip install Werkzeug`
+可能需要mysql连接驱动
+`pip install mysql-connector-python`
+
 
 ## 文件列表
 
